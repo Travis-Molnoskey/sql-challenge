@@ -27,12 +27,13 @@ CREATE TABLE dept_emp(
 	emp_no INTEGER,
 	FOREIGN KEY (emp_no) REFERENCES employees(emp_no),
 	dept_no VARCHAR,
-	FOREIGN KEY (dept_no) REFERENCES departments(dept_no)
+	FOREIGN KEY (dept_no) REFERENCES departments(dept_no),
+	PRIMARY KEY (emp_no, dept_no)
 );
 
 DROP TABLE IF EXISTS salaries CASCADE;
 CREATE TABLE salaries(
-	emp_no INTEGER,
+	emp_no INTEGER PRIMARY KEY,
 	FOREIGN KEY (emp_no) REFERENCES employees(emp_no),
 	salary INTEGER
 );
@@ -42,5 +43,5 @@ CREATE TABLE dept_manager(
 	dept_no VARCHAR,
 	FOREIGN KEY (dept_no) REFERENCES departments(dept_no),
 	emp_no INTEGER,
-	FOREIGN KEY (emp_no) REFERENCES employees(emp_no)
+	PRIMARY KEY (emp_no, dept_no)
 );
